@@ -9,36 +9,62 @@
           <div style="position: relative; flex: 1; min-width: 0;">
             <mat-icon
               style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: gray;">search</mat-icon>
-            <input type="text" placeholder="Search..."
+            <input type="text" placeholder="Search..." [(ngModel)]="searchTerm"
               style="width: 100%; height: 36px; padding: 0 8px 0 32px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
           </div>
 
-          <button mat-icon-button color="primary" style="flex-shrink: 0;">
+          <button mat-icon-button color="primary" style="flex-shrink: 0;" [matMenuTriggerFor]="typeMenu">
             <mat-icon>filter_list</mat-icon>
           </button>
+          <mat-menu #typeMenu="matMenu">
+            <button mat-menu-item (click)="filterType = ''">All</button>
+            <button mat-menu-item (click)="filterType = 'Education'">Education</button>
+            <button mat-menu-item (click)="filterType = 'Health'">Health</button>
+            <button mat-menu-item (click)="filterType = 'Sports'">Sports</button>
+            <button mat-menu-item (click)="filterType = 'Other'">Other</button>
+          </mat-menu>
         </div>
 
       </div>
 
       <div class="sidebar-list-wrapper">
         <mat-nav-list class="sidebar-list">
-          <mat-list-item *ngFor="let item of items" (click)="selectItem(item)">
+          <mat-list-item *ngFor="let item of filteredItems" (click)="selectItem(item)">
             <div class="item-row">
-              <span class="item-text">{{ item.formName }}</span>
-              <mat-icon class="item-icon">more_vert</mat-icon>
+              <div>
+                <span class="item-text">{{ item.formName }}</span>
+                <span class="item-type">{{ item.formType }}</span>
+              </div>
+              <button mat-icon-button [matMenuTriggerFor]="itemMenu" (click)="$event.stopPropagation()">
+                <mat-icon class="item-icon">more_vert</mat-icon>
+              </button>
+              <mat-menu #itemMenu="matMenu">
+                <button mat-menu-item (click)="deleteForm(item); $event.stopPropagation();">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+                <button mat-menu-item (click)="toggleHighlight(item); $event.stopPropagation();">
+                  <mat-icon>star</mat-icon>
+                  <span>{{ item.highlighted ? 'Unmark Highlight' : 'Mark Highlight' }}</span>
+                </button>
+                <!-- Add more actions here as needed -->
+              </mat-menu>
             </div>
           </mat-list-item>
         </mat-nav-list>
       </div>
 
       <div class="add-button-wrapper">
-        <button mat-fab color="accent" class="add-button">
+        <button mat-fab color="accent" class="add-button" (click)="onAdd()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
     </mat-sidenav>
     <mat-sidenav-content>
-      <app-create-form [selectedItem]="selectedItem"></app-create-form>
+      <div *ngIf="duplicateError" style="color: red; margin-bottom: 8px;">
+        {{ duplicateError }}
+      </div>
+      <app-create-form [selectedItem]="selectedItem" (saveForm)="onSaveForm($event)"></app-create-form>
     </mat-sidenav-content>
 
 

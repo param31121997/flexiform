@@ -37,7 +37,9 @@
   .sidebar-list-wrapper {
     flex: 1;
     overflow-y: auto;
-    margin-bottom: 80px;
+    margin-bottom: 0;
+    min-height: 0;
+    height: 100%;
   }
 
   .add-button-wrapper {
@@ -54,71 +56,45 @@
     margin-right: 0.5rem;
   }
 
-  .form-section {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 1rem;
-  }
-
-  .form-scrollable {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 1rem;
-  }
-
-  .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ccc;
-    position: sticky;
-    bottom: 0;
-    background: white;
-    z-index: 2;
-    padding-bottom: 1rem;
-  }
-
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .form-heading {
-    position: sticky;
-    top: 0;
-    background: white;
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-    z-index: 1;
-  }
-
- mat-list-item {
-  padding: 0 !important; /* remove Angular Material's spacing */
-  height: 56px;
-}
 
 .item-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 100%;
+  align-items: center;
   width: 100%;
-  padding: 0 16px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
+  padding: 0 4px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.item-text {
-  font-size: 16px;
+.item-row .item-text {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0 0 0 0;
 }
 
-.item-icon {
-  font-size: 20px;
+.item-row .item-type {
+  font-size: 0.85em;
   color: #666;
+  margin: -6px 0 0 0;
+  text-transform: capitalize;
 }
 
+.item-row .item-icon {
+  align-self: center;
+  margin: 0;
+}
+
+.item-row > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.mdc-list-item{
+  padding: 0 !important; /* remove Angular Material's spacing */
+}
 
   @media (max-width: 767px) {
     .sidenav-container {
@@ -129,18 +105,6 @@
       width: 100%;
     }
 
-    .form-section {
-      padding: 0.5rem;
-    }
-
-    .form-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .form-actions button {
-      width: 100%;
-    }
   }
 
   .mat-drawer-container{

@@ -1,26 +1,33 @@
-  <div class="form-section">
+<div class="form-section">
     <div class="form-scrollable">
       <h2 class="form-heading">Form for: {{formName || 'New Entry' }}</h2>
-      <form from>
-        <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
-          <input matInput [(ngModel)]="formName" name="formName" required>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Form Type</mat-label>
-          <input matInput [(ngModel)]="formType" name="formType" required>
-        </mat-form-field>
+      <form>
+        <div style="display: flex; gap: 1rem;">
+          <mat-form-field appearance="outline" style="flex: 1;">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="formName" name="formName" required [disabled]="!!selectedItem && !!selectedItem.id">
+          </mat-form-field>
+          <mat-form-field appearance="outline" style="flex: 1;">
+            <mat-label>Form Type</mat-label>
+            <mat-select [(ngModel)]="formType" name="formType" required (selectionChange)="onTypeChange($event.value)">
+              <mat-option value="Education">Education</mat-option>
+              <mat-option value="Health">Health</mat-option>
+              <mat-option value="Sports">Sports</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea matInput [(ngModel)]="formDescription" name="description" required></textarea>
+          <textarea matInput [(ngModel)]="formDescription" name="description" required (ngModelChange)="onDescriptionChange($event)"></textarea>
         </mat-form-field>
+        <div style="margin-top: 0.5rem; color: #666; font-size: 0.95em;">
+          Created by: <span>{{ createdBy }}</span> on <span>{{ createdDate | date:'medium' }}</span>
+        </div>
       </form>
-    </div>
-    <div>
-      <span>createdBy:</span>
     </div>
     <div class="form-actions">
       <button mat-raised-button color="warn">Cancel</button>
-      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="primary" (click)="onSave()">Save</button>
     </div>
   </div>
