@@ -35,6 +35,9 @@ export class CreateFormComponent implements OnInit, OnChanges{
 formName:string='';
 formType:string=""
 formDescription:string='';
+formTypes: string[] = [
+  'Education', 'Health', 'Sports', 'Other', 'Finance', 'HR', 'IT', 'Legal', 'Marketing', 'Operations', 'Research'
+];
   formData = {
     name: '',
     description: '',
@@ -50,15 +53,15 @@ constructor(){
     if (changes['selectedItem'] && changes['selectedItem'].currentValue) {
       this.selectedItem = changes['selectedItem'].currentValue as DynamicForm;
       this.formName = this.selectedItem.formName;
-      // Use real form types
-      const allowedTypes = ['Education', 'Health', 'Sports', 'Other'];
+      // Add more form types
+      const allowedTypes = ['Education', 'Health', 'Sports', 'Other', 'Finance', 'HR', 'IT', 'Legal', 'Marketing', 'Operations', 'Research'];
       this.formType = allowedTypes.includes(this.selectedItem.formType) ? this.selectedItem.formType : allowedTypes[0];
       this.formDescription = this.selectedItem.formDescription;
     }
   }
   ngOnInit(): void {
     this.formName = this.selectedItem.formName;
-    const allowedTypes = ['Education', 'Health', 'Sports', 'Other'];
+    const allowedTypes = ['Education', 'Health', 'Sports', 'Other', 'Finance', 'HR', 'IT', 'Legal', 'Marketing', 'Operations', 'Research'];
     this.formType = allowedTypes.includes(this.selectedItem.formType) ? this.selectedItem.formType : allowedTypes[0];
     this.formDescription = this.selectedItem.formDescription;
   }

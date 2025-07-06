@@ -4,10 +4,11 @@
 
   mat-sidenav {
     width: 280px;
-    padding: 1rem;
-    padding-right: 0px;
+    padding-left: 1rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .sidebar-header {
@@ -35,11 +36,11 @@
   }
 
   .sidebar-list-wrapper {
-    flex: 1;
+    flex: 1 1 auto;
     overflow-y: auto;
     margin-bottom: 0;
     min-height: 0;
-    height: 100%;
+    height: auto;
   }
 
   .add-button-wrapper {
@@ -63,7 +64,6 @@
   align-items: center;
   width: 100%;
   padding: 0 4px;
-  border-bottom: 1px solid #e0e0e0;
 }
 
 .item-row .item-text {
@@ -110,3 +110,74 @@
   .mat-drawer-container{
     background-color: white;
   }
+
+::ng-deep .mat-mdc-menu-item {
+  font-size: 0.85em !important;
+  min-height: 26px !important;
+  line-height: 1.1 !important;
+}
+
+.filter-type-menu{
+  max-height: 300px !important;
+  overflow-y: auto;
+  width: 200px;
+} 
+
+
+.filter-search-box {
+  width: 100%;
+  height: 36px;
+  padding: 0 8px 0 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.filter-search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+}
+
+.filter-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.filter-toolbar-box {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-toolbar-button {
+  flex-shrink: 0;
+}
+
+.no-selection-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  padding: 2rem 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fafbfc;
+  color: #444;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  text-align: center;
+}
+.no-selection-message h2 {
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+.no-selection-message p {
+  font-size: 1em;
+  margin: 0;
+}

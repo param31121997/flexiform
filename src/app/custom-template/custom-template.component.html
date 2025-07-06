@@ -5,23 +5,18 @@
     <mat-sidenav #sidenav [mode]="sidebarMode" [opened]="sidebarOpened" class="mat-elevation-z4">
       <div class="sidebar-header">
         <!-- <div class="search-sort-wrapper"> -->
-        <div style="display: flex; align-items: center; gap: 8px; overflow: hidden;">
-          <div style="position: relative; flex: 1; min-width: 0;">
-            <mat-icon
-              style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: gray;">search</mat-icon>
-            <input type="text" placeholder="Search..." [(ngModel)]="searchTerm"
-              style="width: 100%; height: 36px; padding: 0 8px 0 32px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" />
+        <div class="filter-toolbar">
+          <div class="filter-toolbar-box">
+            <mat-icon class="filter-search-icon">search</mat-icon>
+            <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" class="filter-search-box" />
           </div>
 
-          <button mat-icon-button color="primary" style="flex-shrink: 0;" [matMenuTriggerFor]="typeMenu">
+          <button mat-icon-button color="primary" class="filter-toolbar-button" [matMenuTriggerFor]="typeMenu">
             <mat-icon>filter_list</mat-icon>
           </button>
-          <mat-menu #typeMenu="matMenu">
+          <mat-menu #typeMenu="matMenu" class="filter-type-menu">
             <button mat-menu-item (click)="filterType = ''">All</button>
-            <button mat-menu-item (click)="filterType = 'Education'">Education</button>
-            <button mat-menu-item (click)="filterType = 'Health'">Health</button>
-            <button mat-menu-item (click)="filterType = 'Sports'">Sports</button>
-            <button mat-menu-item (click)="filterType = 'Other'">Other</button>
+            <button mat-menu-item *ngFor="let type of formTypes" (click)="filterType = type">{{ type }}</button>
           </mat-menu>
         </div>
 
@@ -64,7 +59,15 @@
       <div *ngIf="duplicateError" style="color: red; margin-bottom: 8px;">
         {{ duplicateError }}
       </div>
-      <app-create-form [selectedItem]="selectedItem" (saveForm)="onSaveForm($event)"></app-create-form>
+      <ng-container *ngIf="selectedItem; else noSelection">
+        <app-create-form [selectedItem]="selectedItem" (saveForm)="onSaveForm($event)"></app-create-form>
+      </ng-container>
+      <ng-template #noSelection>
+        <div class="no-selection-message">
+          <h2>Welcome to Dynamic Forms</h2>
+          <p>Select a form from the list or click <b>Add</b> to create a new dynamic form.</p>
+        </div>
+      </ng-template>
     </mat-sidenav-content>
 
 

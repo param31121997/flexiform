@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatSidenav } from '@angular/material/sidenav';
 
 // Angular Material Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -44,74 +45,48 @@ export interface DynamicFormWithHighlight extends DynamicForm {
   styleUrl: './custom-template.component.css',
 })
 export class CustomTemplateComponent implements OnInit {
+  @ViewChild('sidenav') sidenav!: MatSidenav;
   sidebarOpened = true;
   sidebarMode: 'side' | 'over' = 'side';
   searchTerm: string = '';
   items: DynamicFormWithHighlight[] = [
-    {
-      id: '1',
-      formName: 'Student Registration',
-      formType: 'Education',
-      formDescription: 'Form for new student registration. Please provide all required details including previous academic records, emergency contacts, and any special needs.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '2',
-      formName: 'Health Checkup',
-      formType: 'Health',
-      formDescription: 'Annual health checkup form. Include recent medical history, allergies, and current medications for a comprehensive review.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '3',
-      formName: 'Sports Enrollment',
-      formType: 'Sports',
-      formDescription: 'Form for sports club enrollment. Specify preferred sports, previous experience, and any health restrictions.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '4',
-      formName: 'Library Membership',
-      formType: 'Education',
-      formDescription: 'Library membership application. Provide contact details and preferred genres for personalized recommendations.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '5',
-      formName: 'Medical History',
-      formType: 'Health',
-      formDescription: 'Detailed medical history form. List all past illnesses, surgeries, and family medical background.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '6',
-      formName: 'Event Registration',
-      formType: 'Other',
-      formDescription: 'Register for upcoming events. Indicate event preferences and dietary restrictions if any.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '7',
-      formName: 'Parent Consent',
-      formType: 'Education',
-      formDescription: 'Consent form for parents. Authorize participation in school activities and field trips.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '8',
-      formName: 'Fitness Assessment',
-      formType: 'Sports',
-      formDescription: 'Assessment for fitness programs. Include fitness goals, current activity level, and any injuries.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '9',
-      formName: 'Vaccination Record',
-      formType: 'Health',
-      formDescription: 'Record of vaccinations. Attach copies of vaccination certificates and note any adverse reactions.',
-    } as DynamicFormWithHighlight,
-    {
-      id: '10',
-      formName: 'Alumni Feedback',
-      formType: 'Other',
-      formDescription: 'Feedback form for alumni. Share experiences, suggestions, and willingness to participate in future events.',
-    } as DynamicFormWithHighlight,
+    { id: '1', formName: 'Student Registration', formType: 'Education', formDescription: 'Register new students for the academic year.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '2', formName: 'Health Checkup', formType: 'Health', formDescription: 'Annual health checkup form for employees.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '3', formName: 'Sports Enrollment', formType: 'Sports', formDescription: 'Sign up for sports activities and clubs.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '4', formName: 'Event Feedback', formType: 'Other', formDescription: 'Collect feedback for recent events.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '5', formName: 'Expense Reimbursement', formType: 'Finance', formDescription: 'Submit expenses for reimbursement.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '6', formName: 'Leave Application', formType: 'HR', formDescription: 'Apply for leave or time off.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '7', formName: 'IT Support Request', formType: 'IT', formDescription: 'Request IT support for hardware or software issues.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '8', formName: 'Legal Consultation', formType: 'Legal', formDescription: 'Request a legal consultation appointment.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '9', formName: 'Marketing Campaign', formType: 'Marketing', formDescription: 'Submit a new marketing campaign proposal.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '10', formName: 'Operations Checklist', formType: 'Operations', formDescription: 'Daily operations checklist for staff.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '11', formName: 'Research Proposal', formType: 'Research', formDescription: 'Submit a new research project proposal.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '12', formName: 'Course Feedback', formType: 'Education', formDescription: 'Feedback form for completed courses.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '13', formName: 'Vaccination Record', formType: 'Health', formDescription: 'Record of vaccinations for employees.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '14', formName: 'Team Registration', formType: 'Sports', formDescription: 'Register a team for the annual tournament.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '15', formName: 'Suggestion Box', formType: 'Other', formDescription: 'Submit suggestions for workplace improvement.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '16', formName: 'Budget Request', formType: 'Finance', formDescription: 'Request additional budget for your department.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '17', formName: 'Employee Onboarding', formType: 'HR', formDescription: 'Onboarding form for new employees.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '18', formName: 'Software Access', formType: 'IT', formDescription: 'Request access to new software tools.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '19', formName: 'Contract Review', formType: 'Legal', formDescription: 'Submit contracts for legal review.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '20', formName: 'Ad Campaign Results', formType: 'Marketing', formDescription: 'Report results of recent ad campaigns.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '21', formName: 'Inventory Update', formType: 'Operations', formDescription: 'Update inventory records for the warehouse.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '22', formName: 'Lab Results Submission', formType: 'Research', formDescription: 'Submit lab results for ongoing research.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '23', formName: 'Parent Consent', formType: 'Education', formDescription: 'Consent form for student activities.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '24', formName: 'Medical History', formType: 'Health', formDescription: 'Detailed medical history form.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '25', formName: 'Fitness Assessment', formType: 'Sports', formDescription: 'Assessment for fitness program participants.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '26', formName: 'Lost & Found', formType: 'Other', formDescription: 'Report lost or found items.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '27', formName: 'Travel Advance', formType: 'Finance', formDescription: 'Request travel advance for business trips.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '28', formName: 'Exit Interview', formType: 'HR', formDescription: 'Exit interview form for departing employees.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '29', formName: 'Hardware Purchase', formType: 'IT', formDescription: 'Request purchase of new hardware.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false },
+    { id: '30', formName: 'Policy Update', formType: 'Legal', formDescription: 'Submit updates to company policies.', schema: {}, uiSchema: {}, sections: [], createdBy: 'Admin', updatedAt: '', company: '', highlighted: false }
   ];
   selectedItem!: DynamicFormWithHighlight;
   duplicateError: string = '';
   filterType: string = '';
+  formTypes: string[] = [
+    'Education', 'Health', 'Sports', 'Other', 'Finance', 'HR', 'IT', 'Legal', 'Marketing', 'Operations', 'Research'
+  ];
 
   constructor(private formService: FormService) {}
 
@@ -132,6 +107,9 @@ export class CustomTemplateComponent implements OnInit {
 
   selectItem(item: DynamicFormWithHighlight) {
     this.selectedItem = item;
+    if (this.sidebarMode === 'over' && this.sidenav) {
+      this.sidenav.close();
+    }
   }
 
   toggleSidenav() {

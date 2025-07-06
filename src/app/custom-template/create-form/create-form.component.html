@@ -10,10 +10,7 @@
           <mat-form-field appearance="outline" style="flex: 1;">
             <mat-label>Form Type</mat-label>
             <mat-select [(ngModel)]="formType" name="formType" required (selectionChange)="onTypeChange($event.value)">
-              <mat-option value="Education">Education</mat-option>
-              <mat-option value="Health">Health</mat-option>
-              <mat-option value="Sports">Sports</mat-option>
-              <mat-option value="Other">Other</mat-option>
+              <mat-option *ngFor="let type of formTypes" [value]="type">{{ type }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
