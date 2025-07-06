@@ -1,0 +1,26 @@
+  <div class="form-section">
+    <div class="form-scrollable">
+      <h2 class="form-heading">Form for: {{formName || 'New Entry' }}</h2>
+      <form from>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="formName" name="formName" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Form Type</mat-label>
+          <input matInput [(ngModel)]="formType" name="formType" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput [(ngModel)]="formDescription" name="description" required></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+    <div>
+      <span>createdBy:</span>
+    </div>
+    <div class="form-actions">
+      <button mat-raised-button color="warn">Cancel</button>
+      <button mat-raised-button color="primary">Save</button>
+    </div>
+  </div>

@@ -1,0 +1,148 @@
+.sidenav-container {
+    height: calc(100vh - 64px);
+  }
+
+  mat-sidenav {
+    width: 280px;
+    padding: 1rem;
+    padding-right: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    padding-bottom: 1rem;
+  }
+
+  .search-sort-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .search-box {
+    flex: 1;
+  }
+
+  .sort-icon-button {
+    height: 56px;
+    margin-top: 4px;
+  }
+
+  .sidebar-list-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 80px;
+  }
+
+  .add-button-wrapper {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    background: white;
+    z-index: 10;
+    padding: 1rem;
+  }
+
+  .add-button {
+    margin-right: 0.5rem;
+  }
+
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+  }
+
+  .form-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 1rem;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    z-index: 2;
+    padding-bottom: 1rem;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .form-heading {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    z-index: 1;
+  }
+
+ mat-list-item {
+  padding: 0 !important; /* remove Angular Material's spacing */
+  height: 56px;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+
+.item-text {
+  font-size: 16px;
+}
+
+.item-icon {
+  font-size: 20px;
+  color: #666;
+}
+
+
+  @media (max-width: 767px) {
+    .sidenav-container {
+      flex-direction: column;
+    }
+
+    mat-sidenav {
+      width: 100%;
+    }
+
+    .form-section {
+      padding: 0.5rem;
+    }
+
+    .form-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .form-actions button {
+      width: 100%;
+    }
+  }
+
+  .mat-drawer-container{
+    background-color: white;
+  }
